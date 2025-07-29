@@ -1,10 +1,8 @@
 package com.example.contact_manager
 
 import android.annotation.SuppressLint
-import android.content.DialogInterface.OnClickListener
 import android.content.Intent
 import android.os.Bundle
-import android.service.autofill.OnClickAction
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
@@ -21,34 +19,26 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.contact_manager.ui.theme.Contact_ManagerTheme
 
-class MainActivity : ComponentActivity() {
+class SecondActivity : ComponentActivity() {
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-       val txt=findViewById<TextView>(R.id.tvName)
-        val btn=findViewById<Button>(R.id.btn)
+        enableEdgeToEdge()
+        setContentView(R.layout.activity_second)
+        val txt=findViewById<TextView>(R.id.tvName2)
+        val btn=findViewById<Button>(R.id.btn2)
         btn.setOnClickListener{
-            val intent=Intent(this,SecondActivity::class.java)
+            val intent=Intent(this,MainActivity::class.java)
             startActivity(intent)
-        }
-
-        val btnShare=findViewById<Button>(R.id.btnShare)
-        btnShare.setOnClickListener{
-            val shareIntent=Intent(Intent.ACTION_SEND).apply {
-                type="text/plain"
-                putExtra(Intent.EXTRA_TEXT,"Hello From My App !")
-            }
-            startActivity(Intent.createChooser(shareIntent,"share via"))
         }
         logEvent("onCreate")
 
 
     }
-private fun logEvent(event:String){
-    Log.d("LifeCycle",event)
+    private fun logEvent(event:String){
+        Log.d("LifeCycle",event)
 
-}
+    }
     override fun onStart() {
         super.onStart()
         logEvent("onStart")
@@ -74,7 +64,7 @@ private fun logEvent(event:String){
 }
 
 @Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
+fun Greeting2(name: String, modifier: Modifier = Modifier) {
     Text(
         text = "Hello $name!",
         modifier = modifier
@@ -83,9 +73,9 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 
 @Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
+fun GreetingPreview2() {
     Contact_ManagerTheme {
-        Greeting("Android")
+        Greeting2("Android")
     }
 }
 
