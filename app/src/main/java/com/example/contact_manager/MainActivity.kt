@@ -28,8 +28,13 @@ class MainActivity : ComponentActivity() {
         setContentView(R.layout.activity_main)
        val txt=findViewById<TextView>(R.id.tvName)
         val btn=findViewById<Button>(R.id.btn)
+        val btn2=findViewById<Button>(R.id.btnTask2)
         btn.setOnClickListener{
             val intent=Intent(this,SecondActivity::class.java)
+            startActivity(intent)
+        }
+        btn2.setOnClickListener{
+            val intent=Intent(this,ContactActivity::class.java)
             startActivity(intent)
         }
 
